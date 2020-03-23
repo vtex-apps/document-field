@@ -27,7 +27,10 @@ describe('DocumentField', () => {
       const [document, setDocument] = React.useState('')
       const [documentType, setDocumentType] = React.useState('cpf')
 
-      const handleDocumentChange = data => {
+      const handleDocumentChange = (data: {
+        document: string
+        documentType: string
+      }) => {
         setDocument(data.document)
         setDocumentType(data.documentType)
       }

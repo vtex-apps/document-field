@@ -13,6 +13,8 @@ declare module 'vtex.styleguide' {
     suffix?: React.ReactNode
     prefix?: React.ReactNode
     isLoadingButton?: boolean
+    value: string
+    onChange: React.ChangeEventHandler<HTMLInputElement>
   } & React.InputHTMLAttributes<HTMLInputElement>
 
   export const Input: React.FC<InputProps>
