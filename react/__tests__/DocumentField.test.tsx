@@ -4,7 +4,7 @@ import { render, fireEvent } from '@vtex/test-tools/react'
 import DocumentField from '../DocumentField'
 
 describe('DocumentField', () => {
-  it('should mask correctly BRA documents', () => {
+  it('should correctly mask BRA documents', () => {
     const Component = () => {
       return (
         <DocumentField
