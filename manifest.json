@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "document-field",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "title": "Document Field",
   "description": "UI component responsible for rendering a document field with a dropdown",
   "builders": {
