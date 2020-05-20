@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Masking of the document will now occur only on the `blur` event.
-- The input now allows any character to be typed, not only numbers.
+- The document input now allows any character.
 
 ## [0.1.0] - 2020-03-24
 ### Added
