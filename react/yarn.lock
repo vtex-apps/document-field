@@ -1462,10 +1462,10 @@
     vtex-tachyons "^3.2.0"
     whatwg-fetch "2.0.4"
 
-"@vtex/test-tools@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@vtex/test-tools/-/test-tools-3.0.3.tgz#1538e5f405911d5ea362570ee9f33166a7910286"
-  integrity sha512-X946xDUaVBPstHF7fa6O5+Ea+ZvCYsS+3uUrNfNpf5e7LQNI5GwE71B2k/Viztiq8fnAwnWEXIDMIl9Ye2EBYw==
+"@vtex/test-tools@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@vtex/test-tools/-/test-tools-3.1.0.tgz#05d9d2574a57c791b342d0156ac52fccb8843729"
+  integrity sha512-ZZd3IP042R7v/5SbdHAxo6STuy7MldoCv4apSK6lIb9jJfm6K5dzEQBVroY+uQj5tf+tnpM5pTjaqSJu0u/icw==
   dependencies:
     "@babel/core" "^7.8.4"
     "@babel/plugin-proposal-class-properties" "^7.7.4"
