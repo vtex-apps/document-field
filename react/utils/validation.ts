@@ -1,3 +1,4 @@
+export const CPF_LENGTH = 11
 export const CPF_MASK = '999.999.999-99'
 
 const unmaskCPF = (value: string) => value.replace(/\D/g, '')
@@ -5,7 +6,7 @@ const unmaskCPF = (value: string) => value.replace(/\D/g, '')
 export const validateCPF = (value: string) => {
   const unmaskedValue = unmaskCPF(value)
 
-  if (unmaskedValue.length !== 11) {
+  if (unmaskedValue.length !== CPF_LENGTH) {
     return false
   }
 
