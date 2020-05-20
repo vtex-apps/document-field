@@ -2,7 +2,7 @@ import msk from 'msk'
 import * as React from 'react'
 import { Input, InputProps } from 'vtex.styleguide'
 
-import { CPF_MASK, unmaskCPF, validateCPF } from './utils/validation'
+import { CPF_MASK, validateCPF } from './utils/validation'
 
 interface DocumentData {
   document: string
@@ -21,14 +21,44 @@ const DocumentField = React.forwardRef<HTMLInputElement, Props>(
     { documentType = 'cpf', document = '', onChange = () => {}, ...props },
     ref
   ) {
-    const handleDocumentChange: React.ChangeEventHandler<HTMLInputElement> = evt => {
-      const value = msk.fit(evt.target.value, CPF_MASK)
+    const [focused, setFocused] = React.useState(false)
 
+    const handleDocumentChange: React.ChangeEventHandler<HTMLInputElement> = evt => {
       onChange({
-        document: unmaskCPF(value),
+        document: evt.target.value,
         documentType,
-        isValid: validateCPF(value),
+        isValid: true,
       })
+    }
+
+    const onChangeRef = React.useRef(onChange)
+
+    React.useEffect(() => {
+      onChangeRef.current = onChange
+    }, [onChange])
+
+    React.useEffect(() => {
+      if (focused || documentType !== 'cpf') {
+        return
+      }
+
+      const value = msk(document, CPF_MASK)
+
+      onChangeRef.current({
+        document: value,
+        isValid: validateCPF(value),
+        documentType,
+      })
+    }, [focused, documentType, document])
+
+    const handleBlur: React.FocusEventHandler<HTMLInputElement> = evt => {
+      setFocused(false)
+      props.onBlur?.(evt)
+    }
+
+    const handleFocus: React.FocusEventHandler<HTMLInputElement> = evt => {
+      setFocused(true)
+      props.onFocus?.(evt)
     }
 
     return (
@@ -36,8 +66,10 @@ const DocumentField = React.forwardRef<HTMLInputElement, Props>(
         {...props}
         ref={ref}
         prefix={<span className="ttu">{documentType}</span>}
-        value={msk(document, CPF_MASK)}
+        value={document}
         onChange={handleDocumentChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
       />
     )
   }
