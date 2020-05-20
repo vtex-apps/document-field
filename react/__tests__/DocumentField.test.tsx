@@ -133,4 +133,30 @@ describe('DocumentField', () => {
 
     expect(input).toHaveValue('abc123.,[]&*()')
   })
+
+  it('should be able to mask a partially masked BRA document', () => {
+    const ComponentWithPartialDoc = () => {
+      const [doc, setDoc] = React.useState('')
+      return (
+        <DocumentField
+          label="Document"
+          documentType="cpf"
+          document={doc}
+          onChange={(data: { document: string }) => setDoc(data.document)}
+        />
+      )
+    }
+
+    const { getByLabelText } = render(<ComponentWithPartialDoc />)
+
+    const input = getByLabelText(/document/i)
+
+    fireEvent.focus(input)
+
+    fireEvent.change(input, { target: { value: '123.45678901' } })
+
+    fireEvent.blur(input)
+
+    expect(input).toHaveValue('123.456.789-01')
+  })
 })
